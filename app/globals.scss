@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: "ROBOTO-REGULAR";
+  src: url("../public/fonts/Roboto/Roboto-Regular.ttf");
+}
+
+
+@font-face {
+  font-family: "COMPUTER-MODERN-BRIGHT-SEMIBOLD";
+  src: url("../public/fonts/ComputerModernBright/cmunbmr.woff");
+}
+
+
+//google licensed
+@font-face {
+  font-family: "OPEN_SANS";
+  src: url("../public/fonts/open_sans/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "EB_GARAMOND";
+  src: url("../public/fonts/eb_garamond/EBGaramond-Regular.ttf");
+}
+
+@font-face {
+  font-family: "CRIMSON_TEXT";
+  src: url("../public/fonts/Crimson_Text/CrimsonText-Regular.ttf");
+}
+
+@font-face {
+  font-family: "CRIMSON_PRO";
+  src: url("../public/fonts/Crimson_Pro/CrimsonPro-Regular.ttf");
+}
+
+@font-face {
+  font-family: "GLOOCK";
+  src: url("../public/fonts/Gloock/Gloock-Regular.otf");
+}
+
+@font-face {
+  font-family: "LORA-REGULAR";
+  src: url("../public/fonts/lora/Lora-Regular.ttf");
+}
+
+@font-face {
+  font-family: "MONTSERRAT-REGULAR";
+  src: url("../public/fonts/montserrat/Montserrat-Regular.ttf");
+}
+
+@font-face {
+  font-family: "SPECTRAL-REGULAR";
+  src: url("../public/fonts/Spectral/Spectral-Regular.ttf");
+}
+
+@font-face {
+  font-family: "PT-SERIF-REGULAR";
+  src: url("../public/fonts/PT_Serif/PTSerif-Regular.ttf");
+}
+
+
+@font-face {
+  font-family: "RECOLETA";
+  src: url("../public/fonts/recoleta-regular.otf");
+}
+
+@font-face {
+  font-family: "RECOLETA-BOLD";
+  src: url("../public/fonts/recoleta/Recoleta-Bold.woff2");
+}
+
+@font-face {
+  font-family: "MINION";
+  src: url("../public/fonts/minion-pro/MinionPro-Regular.otf");
+}
+
+
+@font-face {
+  font-family: "INTER-SEMIBOLD";
+  src: url("../public/fonts/Inter/Inter-SemiBold.ttf");
+}
+
+
+@font-face {
+  font-family: "INTER";
+  src: url("../public/fonts/inter/Inter-Regular.ttf");
+}
+
+@font-face {
+  font-family: "SOURCE-SERIF";
+  src: url("../public/fonts/Source_Serif_4/SourceSerif4-Regular.ttf");
+}
+
+@font-face {
+  font-family: "SYNE";
+  src: url("../public/fonts/Syne_Tactile/SyneTactile-Regular.ttf");
+}
+
+@layer components {
+  .icon-menu::after {
+    content: url("../assets/images/icon-arrow-down.svg");
+    display: inline-block;
+    transition: all 220ms linear;
+    margin-left: 8px;
+  }
+
+  html.dark .icon-menu::after {
+    filter: invert(1) brightness(6) hue-rotate(180deg);
+  }
+
+  .icon-menu[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+  }
+
+  /* //testing */
+
+ 
+  /* // navbar toggler NOT WORKING */
+// input#nav-toggle:checked + label #show-button {
+//   @apply hidden;
+// }
+
+// input#nav-toggle:checked + label #hide-button {
+//   @apply block;
+// }
+
+// input#nav-toggle:checked ~ #nav-menu {
+//   @apply block;
+// }
+
+  
+.header {
+  @apply w-full mx-auto z-50 border-y-[1px] font-open_sans uppercase
+  border-[#383A3C] sticky
+  dark:bg-darkmode-bg_partials dark:text-white
+  text-black bg-bg_partials
+   tracking-wider  
+}
+
+/* // navbar items */
+.navbar {
+  @apply mx-auto  max-w-7xl relative flex flex-wrap items-center justify-between
+   lg:h-16  h-auto   py-3  xl:px-0 px-2 lg:px-5
+  
+  ;
+}
+
+.navbar-brand {
+  @apply text-2xl font-open_sans font-bold text-black dark:text-white  ;
+  image {
+    @apply max-h-full max-w-full;
+  }
+}
+
+.navbar-nav {
+  @apply text-center lg:text-left text-sm
+
+  ;
+}
+
+// .nav-item {
+//   @apply mb-5 text-left lg:mb-0;
+// }
+
+// .nav-link {
+//   @apply rounded-[30px] px-6 py-2.5 text-left  text-[13.5px] capitalize  text-black dark:text-white transition hover:bg-darkmode-text2 hover:text-white  md:px-3 md:py-3 lg:text-center xl:px-5;
+// }
+
+.nav-link {
+  @apply block p-3  text-black dark:text-white font-semibold dark:font-normal transition-all
+  hover:text-text2 dark:hover:text-darkmode-text2   lg:px-4 lg:py-4 max-w-fit mx-auto
+       bg-left-bottom 
+       bg-gradient-to-r from-text2 to-text2 bg-[length:0%_4px] bg-no-repeat 
+       dark:from-darkmode-text2 dark:to-darkmode-text2 
+       group-hover:bg-[length:100%_3px]  duration-300 ease-out 
+  ;
+  //doesn't seem to work
+  // &.active {
+  //       @apply text-[#FB5148] ;
+  //     }
+ 
+}
+
+//   .nav-item {
+//    @apply  transition-all 
+//    bg-left-bottom bg-gradient-to-r from-[#FB5148] to-[#FB5148] bg-[length:0%_4px] bg-no-repeat 
+//    group-hover:bg-[length:100%_2px]  duration-300 ease-out 
+//    ;
+//    &.active {
+//     @apply hidden;
+//   }
+//  }
+
+.nav-dropdown {
+  @apply mr-0;
+}
+
+.nav-dropdown-list {
+  @apply z-10 min-w-[180px] rounded bg-white p-4 shadow dark:bg-slate-900;
+}
+
+.nav-dropdown-item {
+  @apply mb-2;
+}
+
+.nav-dropdown-link {
+  @apply block py-1 font-semibold text-black transition hover:text-slate-800 dark:text-white dark:hover:text-slate-500;
+}
+
+/* theme-switcher */
+.theme-switcher {
+  @apply inline-flex;
+
+  label {
+    @apply relative inline-block h-4 w-6 cursor-pointer rounded-2xl bg-black dark:bg-white lg:w-10;
+  }
+
+  input {
+    @apply absolute opacity-0;
+  }
+
+  span {
+    @apply absolute -top-1 left-0 dark:lg:left-4 flex h-6 w-6 items-center justify-center rounded-full bg-black transition-all duration-300 dark:bg-white;
+  }
+
+  input:checked + label {
+    span {
+      @apply lg:left-4;
+    }
+  }
+
+  
+}
+
+// form style
+// .form-input {
+//   @apply w-full rounded border-transparent bg-slate-300 px-6 py-4 text-black
+//    placeholder:text-slate-700 focus:border-slate-800 focus:ring-transparent
+//     dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400;
+// }
+
+.form-input {
+  @apply w-full py-3 pl-4 border border-spacing-1 border-gray-600 
+   placeholder:text-gray-700 placeholder:hover:text-gray-900
+  placeholder:dark:text-gray-700 placeholder:dark:hover:text-gray-500
+   bg-white dark:bg-[#121212] max-w-sm
+   ;
+}
+
+// .form-label {
+//   @apply mb-4 block  text-xl font-normal text-black dark:text-white;
+// }
+
+//not working
+.animated_line {
+  border: 2px solid transparent;
+  background-color: #fff;
+  
+  &::after {
+    width: 0%;
+    height: 2px;
+    display: block;
+    background-color: #fff;
+    content: " ";
+    position: absolute;
+    top: 34px;
+    left: 50%;
+    transition: left 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  
+  &:hover {
+    &::after {
+      width: 100%;
+      height: 2px;
+      display: block;
+      background-color: #fff;
+      content: " ";
+      position: absolute;
+      top: 34px;
+      left: 0;
+    }
+  }
+}
+
+//testing underline animated
+
+
+	.link-underline {
+		border-bottom-width: 0;
+		background-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+		background-size: 0 3px;
+		background-position: 0 100%;
+		background-repeat: no-repeat;
+		transition: background-size .5s ease-in-out;
+	}
+
+	.link-underline-black {
+		background-image: linear-gradient(transparent, transparent), linear-gradient(#F2C, #F2C)
+	}
+
+	.link-underline:hover {
+		background-size: 100% 3px;
+		background-position: 0 100%
+	}
+
+
+}
+
+.react-icons {
+  color: white;
+}

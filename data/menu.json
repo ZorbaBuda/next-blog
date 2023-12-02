@@ -1,0 +1,60 @@
+{
+  "main": [
+    {
+      "name": "Blog",
+      "url": "/category/blog"
+    },
+    {
+      "name": "Posts",
+      "url": "/posts"
+    },
+
+     {
+      "name": "Pagination",
+      "url": "/postPagination"
+    },
+    {
+      "name": "Categorias",
+      "url": "/category",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Cuerpo",
+          "url": "/category/body"
+        },
+        {
+          "name": "Mente",
+          "url": "/category/mind"
+        },
+        {
+          "name": "Sexo",
+          "url": "/category/tantra"
+        },
+        {
+          "name": "Yoga",
+          "url": "/category/yoga"
+        }
+      ]
+    },
+    {
+      "name": "Acerca",
+      "url": "/about"
+    }
+   
+   
+  ],
+  "footer": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Acerca",
+      "url": "/about"
+    },
+    {
+      "name": "Contacto",
+      "url": "/contact"
+    }
+  ]
+}
