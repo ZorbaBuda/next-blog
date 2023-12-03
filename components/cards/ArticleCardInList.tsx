@@ -16,7 +16,7 @@ type Props = {
 };
 
 function ArticleCard({ post }: Props) {
-  const { coverImage, slug, date, title, summary,  category } = post;
+  const { id, coverImage, slug, date, title, summary,  category } = post;
 
   // TODO what slugify means
   const titleSlug = slugify(title).toLowerCase();
@@ -30,6 +30,8 @@ function ArticleCard({ post }: Props) {
            </time> )
   
   const imageUrl = `${process.env.NEXT_PUBLIC_GITHUB_URL_IMAGES}${coverImage}`;
+
+  const url = `/posts/${id}`
  
   return (
     // <div className="dark:bg-[#222222] md:border-b md:border-b-slate-700">
@@ -45,7 +47,7 @@ function ArticleCard({ post }: Props) {
            lg:h-[273px] lg:w-[348px]  md:h-[273px] md:w-[348px] sm:h-[273px] sm:container container h-[313px]
              bg-[#EEEEEE] dark:bg-[#252525] rounded-sm
           "
-          href={`/posts/${slug}`}
+          href={url}
         >
         {category === 'blog' ? (
          
@@ -93,7 +95,7 @@ function ArticleCard({ post }: Props) {
          </div>
 
         
-          <Link className="no-underline"    href={`/posts/${slug}`}>
+          <Link className="no-underline"    href={url}>
             <div className=" dark:hover:text-darkmode-text2 dark:text-white transition 
             duration-500 mt-3 font-lora font-bold   tracking-wide lg:text-5xl text-3xl 
              text-black  ">
@@ -116,7 +118,7 @@ function ArticleCard({ post }: Props) {
 
          
 
-          <Button    href={`/posts/${slug}`}>Leer post</Button>
+          <Button    href={url}>Leer post</Button>
         </div>
 
 

@@ -8,7 +8,7 @@ import React from "react";
 import config from '@/data/config.json'
 //TODO use mdx to dropdown children
 import SearchNav from "./SearchNav";
-import { allAbouts } from "@/.contentlayer/generated";
+//import { allAbouts } from "@/.contentlayer/generated";
 import Logo from "../Logo";
 import BrandTitle from "../BrandTitle";
 
@@ -28,7 +28,7 @@ export interface INavigationLink {
 
 export function NavMenu({}) {
 
-  const categories = allAbouts[0].categories
+  //const categories = allAbouts[0].categories
   // distructuring the main menu from menu object
   const { main } = menu;
   const { navigation_button, settings } = config;
@@ -144,7 +144,7 @@ export function NavMenu({}) {
                     </svg>
                   </span>
                   <ul className="nav-dropdown-list hidden group-hover:block lg:invisible lg:absolute lg:block lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100">
-                  {categories?.map((child, i) => (
+                  {/* {categories?.map((child, i) => (
                       <li className="nav-dropdown-item" key={`children-${i}`}>
                         <Link
                           href={`/category/${child}`}
@@ -158,9 +158,9 @@ export function NavMenu({}) {
                         </Link>
                       </li>
                     ))}
-                  </ul>
+                  </ul> */}
                    
-                    {/* {menu.children?.map((child, i) => (
+                    {menu.children?.map((child, i) => (
                       <li className="nav-dropdown-item" key={`children-${i}`}>
                         <Link
                           href={child.url}
@@ -174,7 +174,7 @@ export function NavMenu({}) {
                         </Link>
                       </li>
                     ))}
-                  </ul> */}
+                  </ul>
                 </li>
               ) : (
                 <li className="nav-item nav-dropdown group relative ">

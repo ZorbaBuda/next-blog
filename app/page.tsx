@@ -1,4 +1,4 @@
-import { allPosts } from "@/.contentlayer/generated";
+
 import { Container } from "@/components/layouts/Container";
 import { Button } from "@/components/Button";
 import ArticleList from "@/components/articleListLayouts/ArticleList";
@@ -8,6 +8,8 @@ const MAX_DISPLAY = 5;
 
 // import { getPostsMeta } from "@/lib/posts"
 import { getPostsMeta } from "@/lib/postsOctokit";
+
+export const revalidate = 2
 
 export default async function Home() {
 
