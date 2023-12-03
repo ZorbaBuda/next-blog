@@ -9,8 +9,8 @@ function ArticleList({
   return (
     <div className={`mt-10 space-y-12 ${fullHeight && 'min-h-screen '}`}>
       <div className=" mx-auto grid grid-cols-1 gap-16  md:grid-cols-1 lg:grid-cols-1">
-        {articles.map((post ) => (
-        <ArticleCard key={post.title}  post={post} />
+        {articles.map((post, index) => (
+        <ArticleCard key={index}  post={post} />
         ))}
       </div>
       {showEndMessage && (

@@ -111,10 +111,8 @@ export async function getPostByName(fileName: string) : Promise<BlogPost | undef
 
 export async function getAboutPost() : Promise<BlogAbout | undefined> {
 
-  //https://github.com/airbnb/javascript/blob/master/package.json
   const url = `https://raw.githubusercontent.com/ZorbaBuda/tina-blog/main/content/about/about.mdx`
-  // const res = await fetch(`https://api.github.com/repos/ZorbaBuda/text-blogposts/git/blobs/main/more.mdx`, {
-  // const res = await fetch(`https://raw.githubusercontent.com/ZorbaBuda/text-blogposts/main/${fileName}`, {
+  
       const res = await fetch(url, {
       headers: {
           Accept: 'application/vnd.github+json',
@@ -133,7 +131,7 @@ export async function getAboutPost() : Promise<BlogAbout | undefined> {
   const { frontmatter, content } = await compileMDX<{ 
                                             title: string, 
                                             date?: string,
-                                            category: string[],
+                                            categories: string[],
                                             coverImage?: string,
                                             slug: string
                                             }>({
@@ -163,7 +161,7 @@ export async function getAboutPost() : Promise<BlogAbout | undefined> {
                       id,
                        title: frontmatter.title, 
                       date: frontmatter.date, 
-                      category: frontmatter.category,
+                      categories: frontmatter.categories,
                       coverImage: frontmatter.coverImage,
                       slug: 'about.mdx',
                       content }

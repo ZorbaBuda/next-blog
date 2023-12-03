@@ -1,6 +1,5 @@
 import Image from "next/image";
 import slugify from "slugify";
-import { Post } from "@/.contentlayer/generated";
 import Link from "next/link";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { Button } from "./ButtonCard";
@@ -8,7 +7,7 @@ import Category from "../tags/Category";
 import { TbPointFilled } from "react-icons/tb";
 import { format, parseISO } from "date-fns";
 import { es } from "date-fns/locale";
-import { PostMeta } from "@/types";
+import { BlogPost, PostMeta } from "@/types";
 import getFormattedDate from "@/lib/getFormattedDate";
 
 type Props = {
@@ -16,7 +15,8 @@ type Props = {
 };
 
 function ArticleCard({ post }: Props) {
-  const { id, coverImage, slug, date, title, summary,  category } = post;
+  if(post === undefined) return
+  const { id, coverImage,  date, title, bookAuthor, bookYear, summary,  category } = post;
 
   // TODO what slugify means
   const titleSlug = slugify(title).toLowerCase();
@@ -105,9 +105,11 @@ function ArticleCard({ post }: Props) {
 
           <div className="font-lora font-semibold dark:text-white text-2xl text-black mt-1">
             {" "}
-            {post.bookAuthor ? post.bookAuthor : 'Anonymous'}
+            {bookAuthor} 
+            {bookYear}
+            {/* {!bookAuthor ? '' :  bookAuthor }
             {', '}
-            {post.bookYear ? post.bookYear : 'No year'}
+            {!bookYear ? '' : bookYear } */}
           </div>
 
           <div className="font-source_serif dark:text-white text-black leading-normal  lg:text-xl text-base mt-2 

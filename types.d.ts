@@ -31,7 +31,7 @@ type BlogAbout = {
    id: string
    title: string
    date?: IsoDateTimeString | undefined
-   category: string[] 
+   categories: string[] 
    coverImage?: string | undefined
    slug: string
   content: ReactElement<any, string | JSXElementConstructor<any>>,
