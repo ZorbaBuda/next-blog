@@ -1,4 +1,4 @@
-import { allPosts } from "@/.contentlayer/generated";
+// import { allPosts } from "@/.contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import MDXComponents from "@/components/mdx-component";
@@ -25,17 +25,17 @@ export async function generateMetadata({
   params: BlogParam
 }): Promise<Metadata | undefined> {
   const slug = params.postId
-  const post = allPosts.find((p) => p.slug === slug)
+  // const post = allPosts.find((p) => p.slug === slug)
   
-  if (!post) {
-    return
-  }
+  // if (!post) {
+  //   return
+  // }
 
-  const publishedAt = new Date(post.date).toISOString()
+  // const publishedAt = new Date(post.date).toISOString()
  
   return {
-    title: post.title,
-    description: post.summary,
+    // title: post.title,
+    // description: post.summary,
     // openGraph: {
     //   title: post.title,
     //   description: post.summary,
@@ -56,13 +56,13 @@ export async function generateMetadata({
 async function getPostFromParams(params: BlogParam) {
   const slug = params.postId;
 
-  const post = allPosts.find((p) => p.slug === slug);
+  // const post = allPosts.find((p) => p.slug === slug);
 
-  if (!post) {
-    return null;
-  }
+  // if (!post) {
+  //   return null;
+  // }
 
-  return post;
+  // return post;
 }
 
 // export async function generateMetadata({
@@ -89,9 +89,9 @@ const BlogDetails: React.FC<BlogDetailsProps> = async ({ params }) => {
   // const isBookResume = post.type === "Writing" ? false : true;
   // console.log(isBookResume);
 
-  if (!post) {
-    notFound();
-  }
+  // if (!post) {
+  //   notFound();
+  // }
 
   
 
@@ -118,19 +118,19 @@ const BlogDetails: React.FC<BlogDetailsProps> = async ({ params }) => {
   //#endregion  //*======== Scrollspy ===========
   return (
     <Container
-      post={post._id}
-      title={post.title}
-      description={post.summary}
-      coverImage={post.coverImage}
-      date={new Date(post.date).toISOString()}
-      category={post.category}
+      // post={post._id}
+      // title={post.title}
+      // description={post.summary}
+      // coverImage={post.coverImage}
+      // date={new Date(post.date).toISOString()}
+      // category={post.category}
     >
       <ScrollTop />
 
 
      <DocHeading post={post} />
 
-
+{/* 
      <div className=" max-w-4xl flex mx-auto">
       <div className=" flex flex-col  lg:gap-8">
         {post.toc && (
@@ -168,7 +168,7 @@ const BlogDetails: React.FC<BlogDetailsProps> = async ({ params }) => {
           </div>
         </article>
       </div>
-      </div>
+      </div> */}
     </Container>
   );
 };

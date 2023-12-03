@@ -10,10 +10,10 @@ const githubToken = process.env.GITHUB_TOKEN;
 export async function getPostsMeta() {
   console.log('🤣', githubToken)
     const octokit = new Octokit({ auth: githubToken });
-    var resp = await octokit.request(`GET /repos/ZorbaBuda/next-blog/contents/content/posts`, {
+    var resp = await octokit.request(`GET /repos/ZorbaBuda/tina-blog/contents/content/posts`, {
         owner: 'ZorbaBuda',
         // ref: 'testo0',
-        repo: 'next-blog',
+        repo: 'tina-blog',
         "branch": "main",
         path: 'posts',
         headers: {
@@ -45,7 +45,7 @@ export async function getPostsMeta() {
 export async function getPostByName(fileName: string) : Promise<BlogPost | undefined> {
 
   //https://github.com/airbnb/javascript/blob/master/package.json
-  const url = `https://raw.githubusercontent.com/ZorbaBuda/next-blog/main/content/posts/${fileName}`
+  const url = `https://raw.githubusercontent.com/ZorbaBuda/tina-blog/main/content/posts/${fileName}`
   // const res = await fetch(`https://api.github.com/repos/ZorbaBuda/text-blogposts/git/blobs/main/more.mdx`, {
   // const res = await fetch(`https://raw.githubusercontent.com/ZorbaBuda/text-blogposts/main/${fileName}`, {
       const res = await fetch(url, {

@@ -1,8 +1,8 @@
 'use client'
 import { Container } from "@/components/layouts/Container";
-import {  allAbouts } from "@/.contentlayer/generated";
+// import {  allAbouts } from "@/.contentlayer/generated";
 import MDXComponents from "@/components/mdx-component";
-import { About } from "@/.contentlayer/generated";
+// import { About } from "@/.contentlayer/generated";
 import Link from "next/link";
 import React from "react";
 import { TbPointFilled } from "react-icons/tb";
@@ -24,7 +24,7 @@ export default function About() {
        
        "
       >
-        <MDXComponents code={allAbouts[0].body.code} />
+        {/* <MDXComponents code={allAbouts[0].body.code} /> */}
         {/* <Component
                   components={
                     {
