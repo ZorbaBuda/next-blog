@@ -9,52 +9,82 @@ import Tag from "@/components/tags/Tag";
 import { Container } from "@/components/layouts/Container";
 import { BsFillTagsFill} from 'react-icons/bs'
 import siteMetadata from "@/data/siteMetadata";
+import { getPostByName, getPostsMeta } from "@/lib/postsOctokit";
+import getFormattedDate from "@/lib/getFormattedDate";
 
-type BlogParam = {
+type Props = {
+  params: {
   postId: string;
+  }
 };
 
-interface BlogDetailsProps {
-  params: BlogParam;
+export async function generateStaticParams() {
+  const posts = await getPostsMeta() //deduped!
+
+  if (!posts) return []
+
+  return posts.map((post) => ({
+      postId: post.id
+  }))
 }
 
+// interface BlogDetailsProps {
+//   params: BlogParam;
+// }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: BlogParam
-}): Promise<Metadata | undefined> {
-  const slug = params.postId
-  // const post = allPosts.find((p) => p.slug === slug)
+
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: BlogParam
+// }): Promise<Metadata | undefined> {
+//   const slug = params.postId
+//   // const post = allPosts.find((p) => p.slug === slug)
   
-  // if (!post) {
-  //   return
-  // }
+//   // if (!post) {
+//   //   return
+//   // }
 
-  // const publishedAt = new Date(post.date).toISOString()
+//   // const publishedAt = new Date(post.date).toISOString()
  
+//   return {
+//     // title: post.title,
+//     // description: post.summary,
+//     // openGraph: {
+//     //   title: post.title,
+//     //   description: post.summary,
+//     //   siteName: siteMetadata.title,
+//     //   locale: 'en_US',
+//     //   type: 'article',
+//     //   publishedTime: publishedAt,
+//     //   url: './',
+//     // },
+//     // twitter: {
+//     //   card: 'summary_large_image',
+//     //   title: post.title,
+//     //   description: post.summary,
+//     // },
+//   }
+// }
+
+export async function generateMetadata({ params: { postId } }: Props) {
+
+  const post = await getPostByName(`${postId}.mdx`) //deduped!
+
+  if (!post) {
+      return {
+          title: 'Post Not Found'
+      }
+  }
+
   return {
-    // title: post.title,
-    // description: post.summary,
-    // openGraph: {
-    //   title: post.title,
-    //   description: post.summary,
-    //   siteName: siteMetadata.title,
-    //   locale: 'en_US',
-    //   type: 'article',
-    //   publishedTime: publishedAt,
-    //   url: './',
-    // },
-    // twitter: {
-    //   card: 'summary_large_image',
-    //   title: post.title,
-    //   description: post.summary,
-    // },
+      title: post.meta.title,
   }
 }
 
-async function getPostFromParams(params: BlogParam) {
-  const slug = params.postId;
+
+// async function getPostFromParams(params: BlogParam) {
+//   const slug = params.postId;
 
   // const post = allPosts.find((p) => p.slug === slug);
 
@@ -63,7 +93,7 @@ async function getPostFromParams(params: BlogParam) {
   // }
 
   // return post;
-}
+//}
 
 // export async function generateMetadata({
 //   params,
@@ -80,10 +110,19 @@ async function getPostFromParams(params: BlogParam) {
 //   };
 // }
 
-const BlogDetails: React.FC<BlogDetailsProps> = async ({ params }) => {
-  // export default function SingleBlogPage(params: BlogParam) {
-  //const Component = React.useMemo(() => getMDXComponent(code), [code]);
-  const post = await getPostFromParams(params);
+export default async function Post({ params: { postId } }: Props) {
+
+  const post = await getPostByName(`${postId}.mdx`) //deduped!
+
+  if (!post) notFound()
+
+  const { meta, content } = post
+
+  const pubDate = getFormattedDate(meta.date)
+
+  // const tags = meta.tags.map((tag, i) => (
+  //     <Link key={i} href={`/tags/${tag}`}>{tag}</Link>
+  // ))
 
  
   // const isBookResume = post.type === "Writing" ? false : true;
@@ -130,14 +169,14 @@ const BlogDetails: React.FC<BlogDetailsProps> = async ({ params }) => {
 
      <DocHeading post={post} />
 
-{/* 
+
      <div className=" max-w-4xl flex mx-auto">
       <div className=" flex flex-col  lg:gap-8">
-        {post.toc && (
+        {/* {post.toc && (
           <div className="mt-10 lg:col-start-1 lg:col-end-10">
             {post.toc.length > 0 && <TableOfContents source={post.body.raw} />}
           </div>
-        )}
+        )} */}
 
      
 
@@ -151,7 +190,8 @@ const BlogDetails: React.FC<BlogDetailsProps> = async ({ params }) => {
           
           "
           >
-            <MDXComponents code={post.body.code} />
+            {content}
+            {/* <MDXComponents code={post.body.code} /> */}
           </article>
       
 
@@ -161,16 +201,16 @@ const BlogDetails: React.FC<BlogDetailsProps> = async ({ params }) => {
              <div className="ml-3">Etiquetas:</div>
           </div>
           
-         <div className="ml-5 flex gap-2">
+         {/* <div className="ml-5 flex gap-2">
           {post.tags.map((tag) => (
             <Tag key={tag} text={tag} />
           ))}
-          </div>
+          </div> */}
         </article>
       </div>
-      </div> */}
+      </div>
     </Container>
   );
 };
 
-export default BlogDetails;
+

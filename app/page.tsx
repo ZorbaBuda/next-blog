@@ -16,7 +16,7 @@ export default async function Home() {
   // const postsDave = await getPostsMeta()
   // console.log('❤',postsDave[0])
   const postsMeta = await getPostsMeta()
-  console.log('✔', postsMeta)
+  // console.log('✔', postsMeta)
 
   if (!postsMeta) {
     return <p className="mt-10 text-center">Sorry, no posts available.</p>;

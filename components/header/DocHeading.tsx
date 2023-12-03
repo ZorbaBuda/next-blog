@@ -1,23 +1,26 @@
-import { Post } from "@/.contentlayer/generated";
+// import { Post } from "@/.contentlayer/generated";
 import Image from "next/image";
 import Category from "../tags/Category";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { format, parseISO } from 'date-fns'
 import  es  from "date-fns/locale/es";
+import { BlogPost } from "@/types";
+import getFormattedDate from "@/lib/getFormattedDate";
 
 
 type Props = {
-  post: Post;
+  post: BlogPost;
 };
 
 export default function DocHeading({ post }: Props) {
-  const imageUrl = `${process.env.GITHUB_URL_IMAGES}${post.coverImage}`;
+  const imageUrl = `${process.env.GITHUB_URL_IMAGES}${post.meta.coverImage}`;
  
-  const formattedDate = (
-    <time dateTime={post.date} className="ml-3">
-          {format(parseISO(post.date), 'd LLLL , yyyy', {locale: es})}
-        </time>
-  )
+  const formattedDate = getFormattedDate(post.meta.date)
+  // const formattedDate = (
+  //   <time dateTime={post.date} className="ml-3">
+  //         {format(parseISO(post.date), 'd LLLL , yyyy', {locale: es})}
+  //       </time>
+  // )
 
   return (
     <div className={``}>
@@ -25,17 +28,17 @@ export default function DocHeading({ post }: Props) {
         <div className="flex justify-center lg:justify-normal lg:col-span-2">
           <div className="  flex flex-col  gap-5 ">
             <div className="text-black dark:text-white lg:text-5xl text-4xl  font-lora font-bold uppercase  tracking-wide ">
-              {post.title}
+              {post.meta.title}
             </div>
 
             <div className=" lg:text-3xl text-xl flex flex-wrap items-center text-black dark:text-white font-lora font-semibold    tracking-wide gap-x-3">
               {" "}
-              {post.bookAuthor ? `${post.bookAuthor},` : ""}{" "}
-              {post.bookYear ? post.bookYear : ""}
+              {post.meta.bookAuthor ? `${post.meta.bookAuthor},` : ""}{" "}
+              {post.meta.bookYear ? post.meta.bookYear : ""}
             </div>
 
             <div className="flex flex-wrap items-center gap-5">
-              <Category text={post.category} />{" "}
+              <Category text={post.meta.category} />{" "}
               <div className="flex  text-sm  uppercase dark:text-slate-400 text-black">
                 <FaRegCalendarAlt />
                {formattedDate}
