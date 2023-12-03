@@ -1,16 +1,31 @@
 
 
-type Meta = {
-    id: string,
-    title: string,
-    date: string,
-    tags: string[],
-  }
+// type Meta = {
+//     id: string,
+//     title: string,
+//     date: string,
+//     tags: string[],
+//   }
+
+import { IsoDateTimeString } from "contentlayer/core";
+
+type PostMeta = {
+  id: string
+   title: string
+   date: IsoDateTimeString
+   tags?: string[] | undefined
+   category: string
+   coverImage: string
+   summary?: string | undefined
+   bookAuthor?: string | undefined
+   bookYear?: string | undefined
+   slug: string
+}
   
   type BlogPost = {
-    meta: Meta,
+    meta: PostMeta,
     content: ReactElement<any, string | JSXElementConstructor<any>>,
-  }
+}
 
   type Toc = {
     value: string;
@@ -42,26 +57,15 @@ type Meta = {
     slug: string
   }  
 
-  export enum ButtonType {
-    PRIMARY = 'primary',
-    SECONDARY = 'secondary',
-    TERTIARY = 'tertiary'
-  }
 
-  export enum PageType {
-    WEBSITE = 'website',
-    ARTICLE = 'article'
-  }
 
-  export type RegularPage = {
-    frontmatter: {
-      title: string;
-      image?: string;
-      description?: string;
-      meta_title?: string;
-      layout?: string;
-      draft?: boolean;
-    };
-    content: string;
-    slug?: string;
-  };
+
+
+type SearchResult = {
+query?: {
+pages?: Result[],
+}
+}
+
+
+

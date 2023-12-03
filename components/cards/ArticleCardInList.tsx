@@ -8,9 +8,11 @@ import Category from "../tags/Category";
 import { TbPointFilled } from "react-icons/tb";
 import { format, parseISO } from "date-fns";
 import { es } from "date-fns/locale";
+import { PostMeta } from "@/types";
+import getFormattedDate from "@/lib/getFormattedDate";
 
 type Props = {
-  post: Post;
+  post: PostMeta;
 };
 
 function ArticleCard({ post }: Props) {
@@ -18,10 +20,15 @@ function ArticleCard({ post }: Props) {
 
   // TODO what slugify means
   const titleSlug = slugify(title).toLowerCase();
+  // const formattedDate = (
+  //   <time dateTime={date} className="mt-1">
+  //         {format(parseISO(post.date), 'd LLLL , yyyy', {locale: es})}
+  //       </time> )
   const formattedDate = (
     <time dateTime={date} className="mt-1">
-          {format(parseISO(post.date), 'd LLLL , yyyy', {locale: es})}
-        </time> )
+             {getFormattedDate(date)}
+           </time> )
+  
   const imageUrl = `${process.env.NEXT_PUBLIC_GITHUB_URL_IMAGES}${coverImage}`;
  
   return (

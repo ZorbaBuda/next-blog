@@ -8,7 +8,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'raw.githubusercontent.com',
         port: '',
-        pathname: '/ZorbaBuda/blog-v4/main/public/**',
+        pathname: '/ZorbaBuda/next-blog/main/public/**',
       },
       {
         protocol: 'https',

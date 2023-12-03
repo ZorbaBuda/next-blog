@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-  "@tailwindcss/line-clamp": "^0.4.4",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -25,7 +25,9 @@
     "marked": "^10.0.0",
     "next": "13.5.4",
     "next-contentlayer": "^0.3.4",
+    "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.2.1",
+    "octokit": "^3.1.2",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
