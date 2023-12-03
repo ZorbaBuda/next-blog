@@ -27,6 +27,16 @@ type PostMeta = {
     content: ReactElement<any, string | JSXElementConstructor<any>>,
 }
 
+type BlogAbout = {
+   id: string
+   title: string
+   date?: IsoDateTimeString | undefined
+   category: string[] 
+   coverImage?: string | undefined
+   slug: string
+  content: ReactElement<any, string | JSXElementConstructor<any>>,
+}
+
   type Toc = {
     value: string;
     depth: number;

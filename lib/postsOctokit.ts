@@ -1,4 +1,4 @@
-import { BlogPost, PostMeta } from "@/types";
+import { BlogAbout, BlogPost, PostMeta } from "@/types";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { Octokit, App } from "octokit";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -109,92 +109,68 @@ export async function getPostByName(fileName: string) : Promise<BlogPost | undef
 }
 
 
-//we pass name as parameter i.e. (name:'mdx2.mdx')
-//used for obtain the meta info from file, just for the card info
-export async function getPost(fileName: string) {
-  // console.log(fileName)
-  //this returns the content encoded in base64
-  // const url= `https://api.github.com/repos/ZorbaBuda/next-blog/contents/content/posts/test1.mdx}`
-  // https://raw.githubusercontent.com/ZorbaBuda/next-blog/main/contents/content/posts/test1.mdx
-// console.log(`http://api.github.com/raw.githubusercontent.com/ZorbaBuda/next-blog/main/content/posts/${fileName}`)
-  const octokit = new Octokit({ auth: githubToken });
-  // var resp = await octokit.request(`GET /repos/ZorbaBuda/next-blog/contents/content/posts/${fileName}`, {
-    var resp = await octokit.request(`GET /raw.githubusercontent.com/ZorbaBuda/next-blog/main/content/posts/${fileName}`, {
+export async function getAboutPost() : Promise<BlogAbout | undefined> {
 
-      owner: 'ZorbaBuda',
-      repo: 'next-blog',
-      path: 'posts',
+  //https://github.com/airbnb/javascript/blob/master/package.json
+  const url = `https://raw.githubusercontent.com/ZorbaBuda/tina-blog/main/content/about/about.mdx`
+  // const res = await fetch(`https://api.github.com/repos/ZorbaBuda/text-blogposts/git/blobs/main/more.mdx`, {
+  // const res = await fetch(`https://raw.githubusercontent.com/ZorbaBuda/text-blogposts/main/${fileName}`, {
+      const res = await fetch(url, {
       headers: {
-        'X-GitHub-Api-Version': '2022-11-28'
+          Accept: 'application/vnd.github+json',
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          'X-GitHub-Api-Version': '2022-11-28',
       }
-  });
+  })
 
-  //TODO manage octokit responses
-  // if (!resp.ok) return undefined
-  console.log(resp.data)
+  if (!res.ok) return undefined
 
-  let buff = Buffer.from(resp.data.content, 'base64');
-  let text = buff.toString('utf-8');
+  const rawMDX = await res.text()
 
-  // saveGithubPost(buff, fileName)
 
-  return {
-    content: text,
-    fileName: fileName,
-    path: resp.data.path,
-    sha: resp.data.sha
-  };
+  if (rawMDX === '404: Not Found')  return undefined 
+
+  const { frontmatter, content } = await compileMDX<{ 
+                                            title: string, 
+                                            date?: string,
+                                            category: string[],
+                                            coverImage?: string,
+                                            slug: string
+                                            }>({
+      source: rawMDX,
+      components: {
+          // Video, 
+          // CustomImage
+      },
+      options: {
+          parseFrontmatter: true,
+          mdxOptions: {
+              rehypePlugins: [
+                 //rehypeHighLight,
+                 rehypeSlug,
+                 [rehypeAutolinkHeadings, {
+                  behavior: 'wrap'
+                 }],
+              ]
+          }
+      } 
+  })
+
+
+  const id = 'about'
+
+  const aboutPostObj: BlogAbout = { 
+                      id,
+                       title: frontmatter.title, 
+                      date: frontmatter.date, 
+                      category: frontmatter.category,
+                      coverImage: frontmatter.coverImage,
+                      slug: 'about.mdx',
+                      content }
+
+ 
+  return aboutPostObj
 }
 
-// export async function getPost(fileName: string) {
-//   console.log(fileName)
-//   const octokit = new Octokit({ auth: githubToken });
-//   var resp = await octokit.request(`GET /repos/ZorbaBuda/next-blog/contents/content/posts/${fileName}`, {
-//       owner: 'ZorbaBuda',
-//       repo: 'next-blog',
-//       path: 'posts',
-//       headers: {
-//         'X-GitHub-Api-Version': '2022-11-28'
-//       }
-//   });
-
-//   let buff = Buffer.from(resp.data.content, 'base64');
-//   let text = buff.toString('utf-8');
-
-//   // saveGithubPost(buff, fileName)
-
-//   return {
-//     content: text,
-//     fileName: fileName,
-//     path: resp.data.path,
-//     sha: resp.data.sha
-//   };
-// }
-
-
-
-
-export async function getAboutPost() {
-  const octokit = new Octokit({ auth: githubToken });
-  var resp = await octokit.request(`GET /repos/ZorbaBuda/blog-v4/contents/content/about/about.mdx`, {
-      owner: 'ZorbaBuda',
-      repo: 'blog-v4',
-      path: 'about',
-      "branch": "main",
-      headers: {
-        'X-GitHub-Api-Version': '2022-11-28'
-      }
-  });
-
-  let buff = Buffer.from(resp.data.content, 'base64');
-  let text = buff.toString('utf-8');
-
-  return {
-    content: text,
-    fileName: 'about.mdx',
-    path: resp.data.path,
-    sha: resp.data.sha
-  };
-}
 
 
