@@ -9,6 +9,12 @@
 
 import { IsoDateTimeString } from "contentlayer/core";
 
+type Heading = {
+  level: string,
+  text: string,
+  slug: string
+}
+
 type PostMeta = {
   id: string
    title: string
@@ -20,6 +26,7 @@ type PostMeta = {
    bookAuthor?: string | undefined
    bookYear?: string | undefined
    slug: string
+   headings?: Heading[]
 }
   
   type BlogPost = {

@@ -1,8 +1,9 @@
-import { BlogAbout, BlogPost, PostMeta } from "@/types";
+import { BlogAbout, BlogPost, Heading, PostMeta } from "@/types";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { Octokit, App } from "octokit";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
+import { extractTocHeadings } from "./remark-tok-headings";
 // "octokit": "^2.0.14",
 const githubToken = process.env.GITHUB_TOKEN;
 
@@ -60,6 +61,11 @@ export async function getPostByName(
   if (!res.ok) return undefined;
 
   const rawMDX = await res.text();
+const headings =  await extractTocHeadings(rawMDX)
+// console.log("heading ❤")
+//  console.log(headings)
+  // console.log(rawMDX)
+
 
   if (rawMDX === "404: Not Found") return undefined;
 
@@ -73,6 +79,7 @@ export async function getPostByName(
     bookAuthor?: string;
     bookYear?: string;
     slug: string;
+    headings?: Heading[]
   }>({
     source: rawMDX,
     components: {
@@ -110,6 +117,7 @@ export async function getPostByName(
       bookAuthor: frontmatter.bookAuthor,
       bookYear: frontmatter.bookYear,
       slug: fileName,
+      headings: headings
     },
     content,
   };

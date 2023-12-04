@@ -9,7 +9,7 @@ const MAX_DISPLAY = 5;
 // import { getPostsMeta } from "@/lib/posts"
 import { getPostsMeta } from "@/lib/postsOctokit";
 
-export const revalidate = 2
+export const revalidate = 60
 
 export default async function Home() {
 

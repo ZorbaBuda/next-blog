@@ -10,7 +10,7 @@ import { getAboutPost } from '@/lib/postsOctokit';
 export default async function CategoryPage() {
   
   const about = await getAboutPost()
-  console.log('🎉',about)
+  // console.log('🎉',about)
   const categories = about.categories
   // const tags = Object.keys(tagFiles)
 

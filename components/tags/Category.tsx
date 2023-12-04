@@ -27,7 +27,8 @@ const Category = ({ text }: Props) => {
           text-[#252525] dark:text-slate-300
            hover:bg-gray-500  dark:hover:text-slate-500"
   >
-    {text.split(' ').join('-')}
+    {/* {text.split(' ').join('-')} */}
+    {text}
   </Link>
   //   <Link
   //   href={`/category/${text}`}

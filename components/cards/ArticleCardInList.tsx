@@ -15,7 +15,7 @@ type Props = {
 };
 
 function ArticleCard({ post }: Props) {
-  console.log(post)
+  // console.log(post)
   if(post === undefined) return
   const { id, coverImage,  date, title, bookAuthor, bookYear, summary,  category } = post;
 

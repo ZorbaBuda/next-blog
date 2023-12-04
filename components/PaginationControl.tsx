@@ -1,5 +1,5 @@
 'use client'
-import { allPosts } from '@/.contentlayer/generated'
+// import { allPosts } from '@/.contentlayer/generated'
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from 'react-icons/gr';
 import { IconContext } from "react-icons";
@@ -30,7 +30,7 @@ const PaginationControls: FC<PaginationControlsProps> = (
 
   const page = searchParams.get('p') ?? '1'
 
-  console.log(allPosts.length)
+  // console.log(allPosts.length)
  
   return (
     <>
@@ -46,9 +46,9 @@ const PaginationControls: FC<PaginationControlsProps> = (
       value= {{  className: "react-icons" }} ><GrPrevious/></IconContext.Provider>
       </button>
 
-      <div>
+      {/* <div>
         {page} / {Math.ceil(allPosts.length / 5)}
-      </div>
+      </div> */}
 
       <button
         className={style.btn}

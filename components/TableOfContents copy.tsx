@@ -1,6 +1,5 @@
 "use client";
 
-import { Heading } from "@/types";
 import clsx from "clsx";
 
 import GithubSlugger from "github-slugger";
@@ -16,7 +15,7 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import { RiArrowUpSLine } from "react-icons/ri";
 
 interface TOCProps {
-  headings: Heading[];
+  source: string;
 }
 
 const useIntersectionObserver = (
@@ -71,24 +70,24 @@ const useIntersectionObserver = (
   }, [setActiveId]);
 };
 
-const TableOfContents = ({ headings }: TOCProps) => {
-  // const headingLines = source
-  //   .split("\n")
-  //   .filter((line) => line.match(/^###*\s/));
+const TableOfContents = ({ source }: TOCProps) => {
+  const headingLines = source
+    .split("\n")
+    .filter((line) => line.match(/^###*\s/));
 
   // console.log(headingLines);
 
-  // const headings = headingLines.map((raw) => {
-  //   const text = raw.replace(/^###*\s/, "");
-  //   const level = raw.slice(0, 3) === "###" ? 3 : 2;
-  //   const slugger = new GithubSlugger();
+  const headings = headingLines.map((raw) => {
+    const text = raw.replace(/^###*\s/, "");
+    const level = raw.slice(0, 3) === "###" ? 3 : 2;
+    const slugger = new GithubSlugger();
 
-  //   return {
-  //     text,
-  //     level,
-  //     id: slugger.slug(text),
-  //   };
-  // });
+    return {
+      text,
+      level,
+      id: slugger.slug(text),
+    };
+  });
 
   const [activeId, setActiveId] = useState<string>();
 
@@ -121,7 +120,7 @@ const TableOfContents = ({ headings }: TOCProps) => {
               <div  key={index} className="mt-[10px] ">
                 <Link
                  
-                  href={`#${heading.slug}`}
+                  href={`#${heading.id}`}
                   // className={clsx(
                   //   heading.id === activeId ? "font-bold" : "font-normal",
                   //   heading.level === 2 ? "pl-2" : "pl-6",
@@ -130,12 +129,12 @@ const TableOfContents = ({ headings }: TOCProps) => {
                   className={clsx(
                     "no-underline  text-black  hover:text-gray-700 ", 
                     "dark:text-white  dark:hover:text-gray-500",
-                    heading.level === "two" ? "pl-2" : "pl-6"
+                    heading.level === 2 ? "pl-2" : "pl-6"
                   )}
                   onClick={(e) => {
                     e.preventDefault();
                     document
-                      .querySelector<any>(`#${heading.slug}`)
+                      .querySelector<any>(`#${heading.id}`)
                       .scrollIntoView({
                         behavior: "smooth",
                         block: "start",

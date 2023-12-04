@@ -62,8 +62,8 @@ export default async function page({
     if (postMeta.category === category) return postMeta;
   });
 
-  console.log('categoryDocs')
-  console.log(categoryDocs)
+  // console.log('categoryDocs')
+  // console.log(categoryDocs)
 
   return (
     <Container>

@@ -117,7 +117,7 @@ export default async function Post({ params: { postId } }: Props) {
   if (!post) notFound()
 
   const { meta, content } = post
-
+ 
   const pubDate = getFormattedDate(meta.date)
 
   // const tags = meta.tags.map((tag, i) => (
@@ -177,6 +177,11 @@ export default async function Post({ params: { postId } }: Props) {
             {post.toc.length > 0 && <TableOfContents source={post.body.raw} />}
           </div>
         )} */}
+          {meta.headings && (
+          <div className="mt-10 lg:col-start-1 lg:col-end-10">
+            {meta.headings.length > 0 && <TableOfContents headings={meta.headings} />}
+          </div>
+        )}
 
      
 
