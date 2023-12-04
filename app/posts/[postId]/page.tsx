@@ -133,28 +133,6 @@ export default async function Post({ params: { postId } }: Props) {
   // }
 
   
-
-  //#region  //*=========== Scrollspy ===========
-  // const activeSection = useScrollSpy();
-  // const [toc, setToc] = React.useState<HeadingScrollSpy>();
-  // const minLevel =
-  //   toc?.reduce((min, item) => (item.level < min ? item.level : min), 10) ?? 0;
-
-  // React.useEffect(() => {
-  //   const headings = document.querySelectorAll('.mdx h1, .mdx h2, .mdx h3');
-
-  //   const headingArr: HeadingScrollSpy = [];
-  //   headings.forEach((heading) => {
-  //     const id = heading.id;
-  //     const level = +heading.tagName.replace('H', '');
-  //     const text = heading.textContent + '';
-
-  //     headingArr.push({ id, level, text });
-  //   });
-
-  //   setToc(headingArr);
-  // }, [frontmatter.slug]);
-  //#endregion  //*======== Scrollspy ===========
   return (
     <Container
       // post={post._id}
@@ -187,11 +165,15 @@ export default async function Post({ params: { postId } }: Props) {
 
         
           <article
-            className=" mt-4 text-black dark:text-white font-source_serif  prose-headings:font-minion
-          prose lg:prose-2xl  sm:prose-lg  md:prose-lg prose-base
-          prose-headings:text-black dark:prose-headings:text-slate-800  
-          prose-headings:text-2xl tracking-normal md:leading-8 leading-7
+            className=" mt-4 text-black dark:text-white font-source_serif  prose-headings:font-lora
+          prose lg:prose-xl  sm:prose-lg  md:prose-lg prose-base
+          prose-headings:text-black dark:prose-headings:text-white prose-headings:font-extrabold
+           tracking-normal md:leading-8 leading-7
           max-w-none md:px-5 sm:px-5 lg:px-0  
+          
+           prose-headings:no-underline prose-headings:text-4xl 
+           prose-a:no-underline
+           
           
           "
           >
@@ -206,11 +188,11 @@ export default async function Post({ params: { postId } }: Props) {
              <div className="ml-3">Etiquetas:</div>
           </div>
           
-         {/* <div className="ml-5 flex gap-2">
-          {post.tags.map((tag) => (
+         <div className="ml-5 flex gap-2">
+          {meta.tags.map((tag) => (
             <Tag key={tag} text={tag} />
           ))}
-          </div> */}
+          </div>
         </article>
       </div>
       </div>
