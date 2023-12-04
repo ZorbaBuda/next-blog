@@ -10,10 +10,11 @@ import searchPosts from "@/lib/searchPosts";
 import { useEffect, useState } from 'react'
 import Search from '@/components/ui/Search'
 import PageTitle from '@/components/PageTitle'
+import { getPostsMeta } from '@/lib/postsOctokit';
 
 
 
-export default function page( {
+export default async function page( {
   searchParams,
 }: {
   searchParams?: {
@@ -24,7 +25,8 @@ export default function page( {
   const query = searchParams?.s || '';
   //for use when pagination const currentPage = Number(searchParams?.page) || 1;
  
-  const posts = searchPosts(query)
+  const postsGithub = await getPostsMeta()
+  const posts = searchPosts(query, postsGithub)
   //console.log("type of posts ", (posts[0]))
  
   return (

@@ -99,7 +99,7 @@ const TableOfContents = ({ headings }: TOCProps) => {
 
 
   return (
-    <div className="font-minion text-lg ">
+    <div className="font-source_serif text-base md:text-lg ">
       <div 
           onClick={() => {
             setIsTOCVisible(!isTOCVisible);
