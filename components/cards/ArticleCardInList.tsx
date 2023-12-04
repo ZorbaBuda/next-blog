@@ -15,6 +15,7 @@ type Props = {
 };
 
 function ArticleCard({ post }: Props) {
+  console.log(post)
   if(post === undefined) return
   const { id, coverImage,  date, title, bookAuthor, bookYear, summary,  category } = post;
 
@@ -105,11 +106,9 @@ function ArticleCard({ post }: Props) {
 
           <div className="font-lora font-semibold dark:text-white text-2xl text-black mt-1">
             {" "}
-            {bookAuthor} 
-            {bookYear}
-            {/* {!bookAuthor ? '' :  bookAuthor }
+            {bookAuthor ? bookAuthor : ''  }
             {', '}
-            {!bookYear ? '' : bookYear } */}
+            {bookYear ?  bookYear : '' }
           </div>
 
           <div className="font-source_serif dark:text-white text-black leading-normal  lg:text-xl text-base mt-2 
