@@ -2,6 +2,9 @@ import "./globals.scss";
 import type { Metadata } from "next";
 import { ThemeProviders } from "./theme-providers";
 import TwSizeIndicator from "@/components/helpers/TwSizeIndicator";
+import { NavMenu } from "@/components/header/NavMenu";
+import { getAboutPost } from "@/lib/postsOctokit";
+import NavWrapper from "./navWrapper";
 
 export const metadata: Metadata = {
   title: "Neuro Primal",
@@ -23,6 +26,7 @@ export default function RootLayout({
       
         <ThemeProviders>
           <TwSizeIndicator />
+          <NavWrapper />
             {/* <NextAuthProvider> */}
           <main className=" bg-white dark:bg-darkmode-bg1 text-black dark:text-white">
             {children}

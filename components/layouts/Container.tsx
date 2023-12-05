@@ -28,7 +28,7 @@ export const Container = (props) => {
   return (
     <div className={` min-h-full`}>
       {/* <Header /> */}
-      <NavMenu />
+      {/* <NavMenu /> */}
      
       <main
         className={`xl:px-0 px-5 lg:px-5 flex flex-col mx-auto max-w-7xl justify-center relative `}

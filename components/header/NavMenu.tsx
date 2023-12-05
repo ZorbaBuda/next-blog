@@ -6,11 +6,10 @@ import ThemeSwitcher from "../ThemeSwitcher";
 import menu from "@/data/menu.json";
 import React from "react";
 import config from '@/data/config.json'
-//TODO use mdx to dropdown children
 import SearchNav from "./SearchNav";
-//import { allAbouts } from "@/.contentlayer/generated";
 import Logo from "../Logo";
 import BrandTitle from "../BrandTitle";
+import { getAboutPost } from "@/lib/postsOctokit";
 
 // child navigation link interface
 export interface IChildNavigationLink {
@@ -26,9 +25,9 @@ export interface INavigationLink {
   children?: IChildNavigationLink[];
 }
 
-export function NavMenu({}) {
+export function NavMenu({categories}) {
 
-  //const categories = allAbouts[0].categories
+  // console.log(categories)
   // distructuring the main menu from menu object
   const { main } = menu;
   const { navigation_button, settings } = config;
@@ -143,38 +142,25 @@ export function NavMenu({}) {
                       <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                     </svg>
                   </span>
+               
                   <ul className="nav-dropdown-list hidden group-hover:block lg:invisible lg:absolute lg:block lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100">
-                  {/* {categories?.map((child, i) => (
+
+                    {categories?.map((child, i) => (
                       <li className="nav-dropdown-item" key={`children-${i}`}>
                         <Link
                           href={`/category/${child}`}
                           className={`nav-dropdown-link block ${
-                            (pathname === `${child}/` ||
-                              pathname === child) &&
-                            "text-text2 dark:text-darkmode-text2"
+                            (pathname === `/category/${child}/` ||
+                              pathname === `/category/${child}`) &&
+                            "text-[#FB5148]"
                           }`}
                         >
                           {child}
                         </Link>
                       </li>
                     ))}
-                  </ul> */}
-                   
-                    {menu.children?.map((child, i) => (
-                      <li className="nav-dropdown-item" key={`children-${i}`}>
-                        <Link
-                          href={child.url}
-                          className={`nav-dropdown-link block ${
-                            (pathname === `${child.url}/` ||
-                              pathname === child.url) &&
-                            "text-[#FB5148]"
-                          }`}
-                        >
-                          {child.name}
-                        </Link>
-                      </li>
-                    ))}
                   </ul>
+
                 </li>
               ) : (
                 <li className="nav-item nav-dropdown group relative ">
@@ -204,21 +190,8 @@ export function NavMenu({}) {
         </ul>
 
         <div className="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-          {/* {settings.search && (
-            <Link
-              className="mr-5 inline-block border-r border-border pr-5 text-xl text-dark hover:text-primary dark:border-darkmode-border dark:text-white"
-              href="/search"
-             
-             
-              aria-label="search"
-            >
-            <div className="hover:text-primary">  <IoSearch /></div>
-            </Link>
-          )} */}
           <SearchNav />
           <ThemeSwitcher className="mr-5" />
-        
-         
         </div>
 
         {/* <SearchModal
