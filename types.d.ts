@@ -18,7 +18,7 @@ type Heading = {
 type PostMeta = {
   id: string
    title: string
-   date: IsoDateTimeString
+   date: Date
    tags?: string[] | undefined
    category: string
    coverImage: string
@@ -37,7 +37,7 @@ type PostMeta = {
 type BlogAbout = {
    id: string
    title: string
-   date?: IsoDateTimeString | undefined
+   date?: Date | undefined
    categories: string[] 
    coverImage?: string | undefined
    slug: string

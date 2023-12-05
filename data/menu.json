@@ -9,10 +9,6 @@
       "url": "/posts"
     },
 
-     {
-      "name": "Pagination",
-      "url": "/postPagination"
-    },
     {
       "name": "Categorias",
       "url": "/category",
@@ -51,10 +47,7 @@
     {
       "name": "Acerca",
       "url": "/about"
-    },
-    {
-      "name": "Contacto",
-      "url": "/contact"
     }
+   
   ]
 }

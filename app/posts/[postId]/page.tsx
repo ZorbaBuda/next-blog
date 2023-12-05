@@ -118,7 +118,7 @@ export default async function Post({ params: { postId } }: Props) {
 
   const { meta, content } = post
  
-  const pubDate = getFormattedDate(meta.date)
+  // const pubDate = getFormattedDate(meta.date)
 
   // const tags = meta.tags.map((tag, i) => (
   //     <Link key={i} href={`/tags/${tag}`}>{tag}</Link>
@@ -172,7 +172,7 @@ export default async function Post({ params: { postId } }: Props) {
           max-w-none md:px-5 sm:px-5 lg:px-0  
           
            prose-headings:no-underline prose-headings:text-4xl 
-           prose-a:no-underline
+           prose-a:no-underline dark:prose-a:text-white
            
           
           "

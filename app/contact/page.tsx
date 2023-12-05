@@ -20,22 +20,23 @@ const Contact = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     // const formData = new FormData(event.target);
-    const res = await sendContactForm({
-      name: name,
-      email: email,
-      subject: subject,
-      message: message,
-    });
-    if (res == 0) {
-      setMessage("Thank you for your valuable comment!");
-      //formRef.current.reset();
-      setName(''),
-      setName(''),
-      setEmail(''),
-      setMessage('')
-    } else {
-      setMessage("Something went wrong! Please try again");
-    }
+    console.log("work in progress")
+    // const res = await sendContactForm({
+    //   name: name,
+    //   email: email,
+    //   subject: subject,
+    //   message: message,
+    // });
+    // if (res == 0) {
+    //   setMessage("Thank you for your valuable comment!");
+    //   //formRef.current.reset();
+    //   setName(''),
+    //   setName(''),
+    //   setEmail(''),
+    //   setMessage('')
+    // } else {
+    //   setMessage("Something went wrong! Please try again");
+    // }
   }
 
 

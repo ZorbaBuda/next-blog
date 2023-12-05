@@ -71,7 +71,7 @@ const headings =  await extractTocHeadings(rawMDX)
 
   const { frontmatter, content } = await compileMDX<{
     title: string;
-    date: string;
+    date: Date;
     tags?: string[];
     category: string;
     coverImage: string;
@@ -144,7 +144,7 @@ export async function getAboutPost(): Promise<BlogAbout | undefined> {
 
   const { frontmatter, content } = await compileMDX<{
     title: string;
-    date?: string;
+    date?: Date;
     categories: string[];
     coverImage?: string;
     slug: string;
