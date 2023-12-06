@@ -12,7 +12,7 @@ import siteMetadata from "@/data/siteMetadata";
 import { getPostByName, getPostsMeta } from "@/lib/postsOctokit";
 import getFormattedDate from "@/lib/getFormattedDate";
 
-export const revalidate = 86400
+export const revalidate = 600
 
 type Props = {
   params: {
