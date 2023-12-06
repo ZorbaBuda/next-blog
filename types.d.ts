@@ -18,7 +18,7 @@ type Heading = {
 type PostMeta = {
   id: string
    title: string
-   date: Date
+   date: string
    tags?: string[] | undefined
    category: string
    coverImage: string

@@ -1,7 +1,7 @@
 // import { allPosts } from "@/.contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import MDXComponents from "@/components/mdx-component";
+// import MDXComponents from "@/components/mdx-component";
 import DocHeading from "@/components/header/DocHeading";
 import TableOfContents from "@/components/TableOfContents";
 import ScrollTop from "@/components/ScrollTop";
@@ -11,6 +11,8 @@ import { BsFillTagsFill} from 'react-icons/bs'
 import siteMetadata from "@/data/siteMetadata";
 import { getPostByName, getPostsMeta } from "@/lib/postsOctokit";
 import getFormattedDate from "@/lib/getFormattedDate";
+
+export const revalidate = 86400
 
 type Props = {
   params: {

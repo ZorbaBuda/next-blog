@@ -1,6 +1,5 @@
 import PageTitle from '@/components/PageTitle';
 import { Container } from '@/components/layouts/Container';
-// import { allAbouts } from '@/.contentlayer/generated';
 import tagFiles from '@/lib/tag-files.json'
 import Category from '@/components/tags/Category';
 import { getAboutPost } from '@/lib/postsOctokit';

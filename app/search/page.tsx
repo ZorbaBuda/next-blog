@@ -1,7 +1,5 @@
 
-import siteMetadata, { search } from '@/data/siteMetadata'
-//import ListLayout from '@/layouts/ListLayoutWithTags'
-//import { genPageMetadata } from 'app/seo'
+
 
 import { Container } from '@/components/layouts/Container'
 import ArticleList from '@/components/articleListLayouts/ArticleList'

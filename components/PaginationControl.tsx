@@ -1,5 +1,4 @@
 'use client'
-// import { allPosts } from '@/.contentlayer/generated'
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from 'react-icons/gr';
 import { IconContext } from "react-icons";

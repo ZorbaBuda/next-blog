@@ -1,15 +1,15 @@
 import Image from "next/image";
 import slugify from "slugify";
-import { Post } from "@/.contentlayer/generated";
 import getFormattedDate from "@/lib/getFormattedDate";
 import Link from "next/link";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { Button } from "../cards/ButtonCard";
 import Category from "../tags/Category";
 import { TbPointFilled } from "react-icons/tb";
+import { PostMeta } from "@/types";
 
 type Props = {
-  post: Post;
+  post: PostMeta;
   pattern: string;
 };
 
@@ -17,7 +17,7 @@ function ArticleCard({ post, pattern }: Props) {
   const { coverImage, slug, date, title, summary, tags, category } = post;
 
   const slug1 = slugify(title).toLowerCase();
-  const formattedDate = getFormattedDate(date);
+  // const formattedDate = getFormattedDate(date);
   const imageUrl = `${process.env.GITHUB_URL_IMAGES}${coverImage}`;
 
   return (
@@ -73,7 +73,7 @@ function ArticleCard({ post, pattern }: Props) {
             </div>
             <div className="flex items-center  text-sm  uppercase dark:text-white text-black gap-2">
               <FaRegCalendarAlt />
-              <div className=" mt-1   ">{formattedDate}</div>
+              {/* <div className=" mt-1   ">{formattedDate}</div> */}
             </div>
           </div>
 
