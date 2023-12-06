@@ -1,8 +1,9 @@
 {
   "site": {
-    "title": "",
-    "base_url": "https://nextplate.netlify.app",
+    "title": "Primal Blog",
+    "base_url": "https://",
     "base_path": "/",
+    "description":"Blog interested in Janov, Reich, Castaneda and more",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.png",
@@ -35,8 +36,8 @@
 
 
   "metadata": {
-    "meta_author": "r",
-    "meta_image": "/images/og-image.png",
+    "meta_author": "Admin",
+    "meta_image": "/images/",
     "meta_description": ""
   }
 }

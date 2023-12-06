@@ -1,14 +1,16 @@
 import "./globals.scss";
+import config from "@/data/config.json";
 import type { Metadata } from "next";
 import { ThemeProviders } from "./theme-providers";
 import TwSizeIndicator from "@/components/helpers/TwSizeIndicator";
 import { NavMenu } from "@/components/header/NavMenu";
 import { getAboutPost } from "@/lib/postsOctokit";
 import NavWrapper from "./navWrapper";
+import Head from "./head";
 
 export const metadata: Metadata = {
-  title: "Neuro Primal",
-  description: "Resúmenes, ideas, textos...",
+  title: config.site.title,
+  description: config.site.description,
 };
 
 export default function RootLayout({
@@ -22,6 +24,7 @@ export default function RootLayout({
       lang="es"
       suppressHydrationWarning
     >
+      <Head />
       <body>
       
         <ThemeProviders>
