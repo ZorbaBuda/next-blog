@@ -2,14 +2,13 @@
 import { Container } from "@/components/layouts/Container";
 import { Button } from "@/components/Button";
 import ArticleList from "@/components/articleListLayouts/ArticleList";
-import { allCoreContent, sortPosts } from "@/lib/postsUtils";
 import PageTitle from "@/components/PageTitle";
 const MAX_DISPLAY = 5;
 
 // import { getPostsMeta } from "@/lib/posts"
 import { getPostsMeta } from "@/lib/postsOctokit";
 
-// export const revalidate = 60
+export const revalidate = 86400
 
 export default async function Home() {
 

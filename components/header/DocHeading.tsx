@@ -1,4 +1,3 @@
-// import { Post } from "@/.contentlayer/generated";
 import Image from "next/image";
 import Category from "../tags/Category";
 import { FaRegCalendarAlt } from "react-icons/fa";

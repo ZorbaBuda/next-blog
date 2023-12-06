@@ -6,9 +6,6 @@ import { Metadata } from "next";
 // import { allAbouts } from '@/.contentlayer/generated'
 import { Container } from "@/components/layouts/Container";
 import BookResumeList from "@/components/articleListLayouts/PostsListGrid";
-// import { allPosts } from '@/.contentlayer/generated'
-// import type { Post } from '@/.contentlayer/generated'
-import { allCoreContent, sortPosts } from "@/lib/postsUtils";
 import ScrollTop from "@/components/ScrollTop";
 import { TbPointFilled } from "react-icons/tb";
 import ArticleList from "@/components/articleListLayouts/ArticleList";
@@ -43,6 +40,8 @@ import { getPostsMeta } from "@/lib/postsOctokit";
 //     description: category,
 //   };
 // }
+
+export const revalidate = 86400
 
 export default async function page({
   params,

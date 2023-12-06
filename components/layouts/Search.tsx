@@ -10,7 +10,7 @@ import {
   FaRegUserCircle,
   FaSearch,
 } from "react-icons/fa/index.js";
-import ImageFallback from "@/components/helpers/ImageFallback";
+// import ImageFallback from "@/components/helpers/ImageFallback";
 import { Container } from "./Container";
 import SearchNoImage from "@/public/no-search-found.png"
 
@@ -115,13 +115,13 @@ const Search = ({ searchList }: Props) => {
         <div className="row">
           {searchResults?.length < 1 ? (
             <div className="mx-auto pt-5 text-center">
-              <ImageFallback
+              {/* <ImageFallback
                 className="mx-auto mb-6"
                 src={SearchNoImage}
                 alt="no-search-found"
                 width={211}
                 height={184}
-              />
+              /> */}
               <h1 className="h2 mb-4">
                 {inputVal.length < 1 ? "Search Post Here" : "No Search Found!"}
               </h1>

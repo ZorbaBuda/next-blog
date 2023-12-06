@@ -71,7 +71,7 @@ const headings =  await extractTocHeadings(rawMDX)
 
   const { frontmatter, content } = await compileMDX<{
     title: string;
-    date: Date;
+    date: string;
     tags?: string[];
     category: string;
     coverImage: string;

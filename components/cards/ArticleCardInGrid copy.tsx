@@ -1,14 +1,14 @@
 import Image from "next/image";
 import slugify from "slugify";
-import { Post } from "@/.contentlayer/generated";
 // import getFormattedDate from "@/lib/getFormattedDate";
 import Link from "next/link";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { Button } from "../Button";
 import Category from "../tags/Category";
+import { PostMeta } from "@/types";
 
 type Props = {
-  post: Post;
+  post: PostMeta;
   pattern: string;
 };
 
