@@ -41,7 +41,7 @@ import { getPostsMeta } from "@/lib/postsOctokit";
 //   };
 // }
 
-export const revalidate = 86400
+export const revalidate = 600
 
 export default async function page({
   params,
