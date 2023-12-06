@@ -1,4 +1,4 @@
-import "./globals.module.scss";
+import "./globals.scss";
 import config from "@/data/config.json";
 import type { Metadata } from "next";
 import { ThemeProviders } from "./theme-providers";
